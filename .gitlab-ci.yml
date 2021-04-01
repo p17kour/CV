@@ -1,0 +1,20 @@
+stages:
+ - deploy
+ - trigger-other-builds
+
+pages:
+  stage: deploy
+  image: schickling/latex
+  script:
+    - mkdir public
+    - pdflatex -output-directory public resume.tex
+  artifacts:
+    paths:
+      - public
+  only:
+     - master
+
+trigger-gshakhn-com:
+  stage: trigger-other-builds
+  script: 
+    - curl -X POST -F token=$GSHAKHN_TOKEN -F ref=master https://gitlab.com/api/v3/projects/$GSHAKHN_PROJECT_ID/trigger/builds
