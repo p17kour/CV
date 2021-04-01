@@ -7,7 +7,7 @@ pages:
   image: schickling/latex
   script:
     - mkdir public
-    - pdflatex -output-directory public resume.tex
+    - pdflatex -output-directory public README.md 
   artifacts:
     paths:
       - public
