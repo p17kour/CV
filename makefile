@@ -1,9 +1,9 @@
 TEX = pandoc
-src = template.tex README.md
+src = README.md
 FLAGS = --pdf-engine=xelatex
 
 output.pdf : $(src)
-	$(TEX) $(filter-out $<,$^ ) -o $@ --template=$< $(FLAGS)
+	$(TEX) $(filter-out $<,$^ ) -o $@ --README=$< $(FLAGS)
 
 .PHONY: clean
 clean :
