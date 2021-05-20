@@ -1,2 +1,2 @@
-__pycache__
-*.pdf
+_site/
+.sass-cache/
